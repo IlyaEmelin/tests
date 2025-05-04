@@ -1,18 +1,14 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
-        offset = len(s)
-        for i in range(len(s)):
-            # 1. Whitespace
-            if s[i] != ' ':
-                offset = i
-                break
+        # 1. Whitespace
+        s = s.strip()
 
         # 2. Signedness
-        is_positive = True
-        if offset < len(s):
-            if s[offset] == '+':
+        is_positive, offset = True, 0
+        if s:
+            if s[0] == '+':
                 offset += 1
-            elif s[offset] == '-':
+            elif s[0] == '-':
                 offset += 1
                 is_positive = False
 
